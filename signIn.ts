@@ -1,34 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Codespaces
-Marketplace
-Explore
- 
-@nbansal0609 
-foresightcares
-/
-FSC_FullStack
-Private
-Cannot fork because forking is disabled.
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-FSC_FullStack/src/screens/Onboarding-signin.tsx /
-
-Reza Baharani mapped .log to .error and removed the extra logs.
-Latest commit 5d4e7ac 2 weeks ago
- History
- 2 contributors
-@ragrawa8@ashkanrdn
-247 lines (230 sloc)  6.48 KB
-
 import {
   SafeAreaView,
   ImageBackground,
@@ -276,18 +245,3 @@ const styles = StyleSheet.create({
     width: "60%",
   },
 });
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-FSC_FullStack/Onboarding-signin.tsx at Dev_Patient · foresightcares/FSC_FullStack
