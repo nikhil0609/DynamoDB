@@ -1,0 +1,489 @@
+# DB_Framework_APIs
+(You will find the functions in index.ts)
+
+#Exercise_IDS:
+
+ChairToStand: ID: '__ID_Chair2Stand_STEADI__'
+
+NormalStand4Stage: ID: '__ID_Balance4Stage_Normal_STEADI__'
+
+BigToeStand4Stage: ID: '__ID_Balance4Stage_BigToe_STEADI__'
+
+TandemStand4Stage: ID: '__ID_Balance4Stage_Tandem_STEADI__'
+
+OneFootStand4Stage: ID: '__ID_Balance4Stage_OneFoot_STEADI__'
+
+TimeUp_and_GO: ID: '__ID_TimeUp_and_GO_STEADI__'
+
+
+## 1st Fuction getUserDetails(user_id)
+
+getUserDetails(user_id_arg) -> It will retrive details of that perticular user.
+
+//How to call this function->
+
+```JS
+(async () => {
+    const user_id = "82f9d82d-7157-4905-85d3-4e25044d322b";
+    let x = await getUserDetails(user_id);
+    console.log(x.data);
+})();
+```
+
+//Response:
+```JS
+[
+  {
+    gender: 'Female',
+    dob: 'Thu Sep 11 1997 17:27:09 GMT-0400',
+    last_name: 'A',
+    weight: 158,
+    first_name: 'R',
+    email: 'H@yopmail.com',
+    height: { feet: 6, inch: 1 }
+  }
+]
+```
+
+<------------------------------------------------------------------------------------------------------------>
+
+## 2nd Fuction getAllUserData()
+
+getAllUserNames() -> It will retrive a set of key value pairs of all the users in the database with user_id as a key and name as a value.
+
+//How to call this function->
+
+```JS
+(async () => {
+    let x = await getAllUserNames();
+    console.log(x);
+})();
+```
+
+//Response:
+```JS
+{
+  '1002': 'Tim Jhonsan',
+  '1008': 'Yash Agrawal',
+  '1009': 'Ben Haris',
+  '1010': 'Wear Neck',
+  '1011': 'Jim Neck',
+  '1012': 'Tom Bleck',
+  '1013': 'Brain Adams',
+  '100456': 'Jhon Ray',
+  'f69c9348-3a5a-4054-80b0-7caf97df89a7': 'Harish Jain',
+  '44520c33-97c0-409c-b0aa-e997346a2f6d': 'Jamal Rex’s'
+}
+```
+
+<------------------------------------------------------------------------------------------------------------>
+
+## 3rd Function getAllUserData()
+
+getAllUserData() -> It will retrive the array of all the user's user_data object with its user_id in the database which have all the profile information about the user.
+
+
+// How to call this function->
+```JS
+(async () => {
+let x = await getAllUserData();
+console.log(x);
+})();
+```
+
+
+//Response:
+```JS
+[
+{
+exercise_id: '0',
+user_id: '1011',
+user_data: {
+last_name: 'Neck',
+first_name: 'Jim',
+dob: '10/20/1998',
+email: 'jim@uncc.edu'
+}
+},
+{
+exercise_id: '0',
+user_id: '44520c33-97c0-409c-b0aa-e997346a2f6d',
+user_data: {
+last_name: 'Rex’s',
+weight: null,
+gender: 'Female',
+first_name: 'Jamal',
+age: null,
+height: '80’'
+}
+},
+{
+exercise_id: '0',
+user_id: '1002',
+user_data: {
+last_name: 'Jhonsan',
+first_name: 'Tim',
+dob: '09/18/2000',
+email: 'tim@uncc.edu'
+}
+}
+]
+```
+<------------------------------------------------------------------------------------------------------------>
+
+## 4th function getUserExerciseData(user_id_arg, exercise_id_arg)
+
+getUserExerciseData(user_id_arg, exercise_id_arg) -> It will retrive the all records of that perticular exercise performed by that perticular user.
+
+//How to call this function->
+```JS
+(async () => {
+    const user_id = "1010";
+    const exercise_id = "1010";
+    let x = await getUserExerciseData(user_id, exercise_id);
+    console.log(x.data);
+})();
+```
+
+//Response:
+```JS
+[
+  {
+    time_stamp: 1675998756014,
+    result_id: '111',
+    exercise_data: { elapsed_time: 45, number_of_steps: 100, final_score: 20 }
+  },
+  {
+    time_stamp: 1675998560868,
+    result_id: '111',
+    exercise_data: { elapsed_time: 150, number_of_steps: 10, final_score: 0 }
+  }
+]
+```
+<------------------------------------------------------------------------------------------------------------>
+
+## 5th function getUserLastFewExerciseData(user_id_arg, exercise_id_arg, limit_arg)
+
+getUserLastFewExerciseData(user_id_arg, exercise_id_arg, limit_arg) -> It will retrive all latest performed exercise record of that perticular exercise performed by that perticular user for a limit.
+
+//How to call this function->
+```JS
+(async () => {
+    const user_id = "012_user_test";
+    const exercise_id = "__ID_TimeUp_and_GO_STEADI__";
+    const limit = 2;
+    let x = await getUserLastFewExerciseData(user_id, exercise_id, limit);
+    console.log(x.data);
+})();
+```
+
+//Response:
+```JS
+[
+  {
+    time_stamp: 1678212488140,
+    result_id: '48c6e7c3-da0d-4c85-85d2-b1b8e7e878cd',
+    exercise_data: { number_of_steps: 10, elapsed_time: 150, final_score: 0 }
+  }
+]
+```
+<------------------------------------------------------------------------------------------------------------>
+
+## 6th function getUserResultID(user_id_arg, exercise_id_arg)
+
+getUserResultID(user_id_arg, exercise_id_arg) -> It will retrive the result ID record of that perticular exercise performed by that perticular user.
+
+//How to call this function->
+```JS
+(async () => {
+    const user_id = "1010";
+    const exercise_id = "1010";
+    let x = await getUserResultID(user_id, exercise_id);
+    console.log(x);
+})();
+```
+
+//Response:
+```JS
+{
+  error: null,
+  result_type: 0,
+  data: [ { result_id: '111', exercise_id: '1010', user_id: '1010' } ]
+}
+```
+<------------------------------------------------------------------------------------------------------------>
+
+## 7th function getTimeUserExerciseData(user_id_arg, exercise_id_arg, from, to)
+
+getTimeUserExerciseData(user_id_arg, exercise_id_arg, from, to) -> It will retrive the single record of that perticular exercise performed by that perticular user using range of time.
+
+//How to call this function->
+```JS
+(async () => {
+    const user_id = "6a736145-9add-425c-8a12-10cbf0900a7d";
+    const exercise_id = "__ID_Chir2Stand_STEADI__";
+    const from = 1676049750137;
+    const to = 1676320565774;
+    let x = await getTimeUserExerciseData(user_id, exercise_id, from, to);
+    console.log(x.data);
+})();
+```
+
+//Response:
+```JS
+[
+  {
+    time_stamp: 1676049750137,
+    result_id: '89db3e7e-14f3-43ed-8626-4e0f33163da0',
+    exercise_data: { pushups: '100', pullups: '30', situp: '15' }
+  },
+  {
+    time_stamp: 1676049849062,
+    result_id: '89db3e7e-14f3-43ed-8626-4e0f33163da0',
+    exercise_data: { pushups: '34', pullups: '21', situp: '46' }
+  },
+  {
+    time_stamp: 1676320565774,
+    result_id: '89db3e7e-14f3-43ed-8626-4e0f33163da0',
+    exercise_data: { pushups: '123', pullups: '144', situp: '10' }
+  }
+]
+```
+<------------------------------------------------------------------------------------------------------------>
+
+## 8th function addUser(login_user_id, userParamsArg, callback_function)
+
+addUser(login_user_id, userParamsArg, callback_function) -> Adds a new user in the database table.
+
+// How to call this function ->
+
+```JS
+const login_user_id = "1010";
+const userParams = {
+    email: "string",
+    first_name: "string",
+    last_name: "string",
+    dob: "string",
+    gender: "string",
+    weight: 99,
+    height: {
+        feet: 99,
+        inch: 99,
+    },
+  };
+
+addUser(login_user_id, userParams, ()=> console.log("User Added Successfully!!"));
+```
+
+
+//Response:
+```JS
+User Added Successfully!!
+```
+
+<------------------------------------------------------------------------------------------------------------>
+
+## 9th Function addExercise(user_id_args, exercise_id_arg, exerciseParamsArg, callback_function)
+
+addExercise(user_id_args, exercise_id_arg, exerciseParamsArg, callback_function) -> Adds a exercise record to the database table for a specific user.
+
+//How to call this function ->
+```JS
+const exercise_data = {
+    elapsed_time: 102,
+    final_score: 20,
+    number_of_steps: 40,
+};
+
+const user_id = "80c3210e-47df-4c5d-8cf0-2ae86e8658f8";
+const exercise_id = "__ID_TimeUp_and_GO_STEADI__";
+addExercise(user_id, exercise_id, exercise_data, ()=> console.log("Added Exercise successfully!!"));
+```
+
+//Response:
+
+```JS
+Added Exercise successfully!!
+```
+
+<------------------------------------------------------------------------------------------------------------>
+
+## 10th Function updateUser(user_id, userParams, callback_function)
+
+updateUser(user_id, userParams, callback_function) --> Updates the details of the user in the database table.
+
+//How to call this function->
+
+```JS
+const user_id = "123";
+let userParams = {
+	email: "string",
+    first_name: "string",
+    last_name: "string",
+    dob: "string",
+    gender: "string",
+    weight: 99,
+    height: {
+        feet: 99,
+        inch: 99,
+    },
+  };
+
+updateUser(user_id, userParams, () => console.log("Updated user details successfully!!"));
+```
+
+//Response:
+```JS
+Updated user details successfully!!
+```
+
+<------------------------------------------------------------------------------------------------------------>
+
+## 11th Function deletePreviousExerciseRecord(user_id_arg, exercise_id_arg, timePerformed, callback_function) 
+
+deletePreviousExerciseRecord(user_id_arg, exercise_id_arg, timePerformed, callback_function) --> Delete exercise record in the table for perticular time it was performed.
+
+//How to call this function->
+
+```JS
+const user_id = "1010";
+const exercise_id = "1010";
+const timePerformed = 1675998756014;
+deletePreviousExerciseRecord(user_id, exercise_id, timePerformed, ()=> console.log("Delete Previous Exercise Record Successfully!!"));
+
+```
+
+//Response:
+```JS
+Deleted Previous Exercise Record Successfully!!
+```
+
+<------------------------------------------------------------------------------------------------------------>
+
+## 12th Function addUserTimeIn(login_user_id, callback_function) 
+
+addUserTimeIn(login_user_id, callback_function) --> Adds a user login time in the database table.
+
+//How to call this function->
+
+```JS
+const login_user_id = "1010";
+addUserTimeIn(login_user_id, ()=> console.log("Login time added successfully!!"));
+```
+
+//Response:
+```JS
+Login time added successfully!!
+```
+
+<------------------------------------------------------------------------------------------------------------>
+
+## 13th Function addUserTimeOut(login_user_id, metaDataParams, callback_function)
+
+addUserTimeOut(login_user_id, metaDataParams, callback_function) --> Adds a user logout time in the database table.
+
+//How to call this function->
+
+```JS
+(async () => {
+    const user_id = "1010";
+    let metaDataParams = {
+        time_spent: "900sec",
+        type: "test123",
+        data: "test456",
+      };
+    let x = await addUserTimeOut(user_id, metaDataParams, ()=> console.log("Logout time added successfully!!"));
+    console.log(x);
+})();
+```
+
+//Response:
+
+```JS
+Logout time added successfully!!"
+```
+
+<------------------------------------------------------------------------------------------------------------>
+
+
+## 14th Function getUserSessionTimeData(user_id_arg)
+
+getUserSessionTimeData(user_id_arg) --> It will retrive all session data records of that perticular user.
+
+//How to call this function->
+
+```JS
+(async () => {
+    const user_id = "1010";
+    let x = await getUserSessionTimeData(user_id);
+    console.log(x.data);
+})();
+```
+
+//Response:
+```JS
+[
+  {
+    user_id: '1010',
+    time_out: 1680727368989,
+    meta_data: { type: 'test123', data: 'test456', time_spent: '900sec' },
+    time_in: 1680727321840
+  },
+  {
+    user_id: '1010',
+    time_out: 1679518088321,
+    meta_data: { type: 'test456', data: 'test456', time_spent: '87sec' },
+    time_in: 1679518052920
+  },
+  {
+    user_id: '1010',
+    time_out: 1679517991818,
+    meta_data: { type: 'test123', data: 'test123', time_spent: '47sec' },
+    time_in: 1679517973047
+  }
+]
+```
+
+<------------------------------------------------------------------------------------------------------------>
+
+
+## 15th Function getUserLastFewSessionTimeData(user_id_arg, limit_arg)
+
+getUserLastFewSessionTimeData(user_id_arg, limit_arg) --> It will retrive last few session data records of that perticular user according to limit.
+
+//How to call this function->
+
+```JS
+(async () => {
+    const user_id = "1010";
+    let x = await getUserSessionTimeData(user_id);
+    console.log(x.data);
+})();
+```
+
+//Response:
+
+```JS
+[
+  {
+    user_id: '1010',
+    time_out: 1680727368989,
+    meta_data: { type: 'test123', data: 'test456', time_spent: '900sec' },
+    time_in: 1680727321840
+  },
+  {
+    user_id: '1010',
+    time_out: 1679518088321,
+    meta_data: { type: 'test456', data: 'test456', time_spent: '87sec' },
+    time_in: 1679518052920
+  },
+  {
+    user_id: '1010',
+    time_out: 1679517991818,
+    meta_data: { type: 'test123', data: 'test123', time_spent: '47sec' },
+    time_in: 1679517973047
+  }
+]
+```
+
+<------------------------------------------------------------------------------------------------------------>
