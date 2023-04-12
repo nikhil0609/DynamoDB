@@ -1,0 +1,73 @@
+export enum EResultType {
+    Success,
+    Error
+}
+
+export interface IData {
+    result_type: EResultType,
+    error: Error | null,
+    data: [unknown | null | undefined]
+}
+
+export interface IUserParams {
+    email: string,
+    first_name: string,
+    last_name: string,
+    dob: string,
+    gender: string,
+    weight: number,
+    height: {
+        feet: number,
+        inch: number,
+    },
+};
+
+export interface IData_UserParams extends IData {
+    data: [IUserParams | null | undefined]
+}
+
+export interface ISmart_Health_Table {
+    exercise_id: string,
+    time: number,
+    user_id: string,
+    user_data: IUserParams | undefined,
+    result_id: string | undefined
+}
+
+export interface IData_Smart_Health_Table extends IData {
+    data: [ISmart_Health_Table | null | undefined]
+}
+
+export interface ITimeParams {
+    time_spent: string,
+    type: string,
+    data: string,
+};
+
+export interface IUser_Login_Table {
+    user_id: string,
+    time_out: number,
+    meta_data: ITimeParams | undefined,
+    time_in: number,
+}
+
+export interface IData_User_Login_Table extends IData {
+    data: [IUser_Login_Table | null | undefined]
+}
+
+export interface IExerciseParams {
+    elapsed_time: number,
+    final_score: number,
+    number_of_steps: number,
+};
+
+export interface IExercise_Results_Table {
+    result_id: string | undefined,
+    time_stamp: number,
+    exercise_data: IExerciseParams | undefined,
+}
+
+export interface IData_Exercise_Results_Table extends IData {
+    data: [IExercise_Results_Table| null | undefined]
+}
+
