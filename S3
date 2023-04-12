@@ -1,0 +1,25 @@
+const AWS = require('aws-sdk');
+const fs = require('fs');
+
+AWS.config.update({ 
+    region: 'us-east-1',
+    secretAccessKey: 'LDEd/iMMm51hJ1Ux2i8SHU0aIW01ofThAq0dOBoo',
+    accessKeyId: 'AKIAWRW334WTSBGT76NR'
+   });
+
+const s3 = new AWS.S3();
+
+const params = {
+  Bucket: 'foresightcares',
+  Key: 'IMG_9560.MOV',
+};
+
+const videoStream = s3.getObject(params).createReadStream();
+
+videoStream.on('error', (err) => {
+  console.log(err);
+});
+
+console.log(videoStream);
+
+videoStream.pipe(fs.createWriteStream('video.mp4'));
